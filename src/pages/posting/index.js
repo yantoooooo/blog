@@ -45,4 +45,4 @@ const mapDispatch = (dispatch) => ({
 })
 
 
-export default connect(mapState, null)(Posting);
+export default connect(mapState, mapDispatch)(Posting);
