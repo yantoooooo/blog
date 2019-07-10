@@ -1,0 +1,1 @@
+export const CHANGE_SIGNUP = 'signup/CHANGE_LOGIN'

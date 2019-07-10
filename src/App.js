@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Header from './common/header'
+import { GlobalStyled } from './style.js';
+import { Font } from './statics/iconfont/iconfont'
+import store from './store'
+import detail from './pages/detail'
+import home from './pages/home'
+import login from './pages/login'
+import posting from './pages/posting'
+import signup from './pages/signup'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        }
+    }
+    render() { 
+        return (
+            <div>
+                <Font/>
+                <GlobalStyled />
+                <Provider store={store}>
+                    <BrowserRouter>
+                        <Header />
+                        <Route path='/' exact component={home}></Route>
+                        <Route path='/detail/:id' component={detail}></Route>
+                        <Route path='/login' component={login}></Route>
+                        <Route path='/posting' component={posting}></Route>
+                        <Route path='/signup' component={signup}></Route>
+
+                    </BrowserRouter>
+                </Provider>
+            </div>
+        );
+    }
 }
 
 export default App;
